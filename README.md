@@ -20,7 +20,7 @@ A non-proprietary, open source, small but mighty PIA client with System Tray GUI
 ###########
 
 # System Requirements
-In order to use this, will need openvpn 2.6 or better, becuase of the openvpn configs from PIA.
+In order to use this, will need openvpn 2.4 or better, becuase of the openvpn configs from PIA.
 
 At this time Ubuntu/Mint is only tested, but should work on RHEL/Rocky/CentOS, no Yum/DNF package support yet. Please feedback if you want a YUM/DNF .rpm package. If there is interest in other Linux flavors/families please let me know or it's just a project for me and my family :P as our daily drivers.
 
@@ -31,7 +31,9 @@ Creates a service piavpn.service and two files in /etc/openvpn/creds.conf and pi
 1) Download the latest released .deb package file off of github and install on your system.
 2) Build DEB Install file:
 
-        Download the zip file of the code, off of Github. This is found under the [<> Code] button on https://github.com/stormtheory/firefox-firejail-wrapper.
+	Pystray is a dependant for this program. This can be done by running command: 'pip install pystray' or 'apt install python3-pystray' depends on your distro.	
+
+	Download the zip file of the code, off of Github. This is found under the [<> Code] button on https://github.com/stormtheory/firefox-firejail-wrapper.
 
         Extract directory from the zip file. Run the build script in the directory.
 
@@ -42,6 +44,8 @@ Creates a service piavpn.service and two files in /etc/openvpn/creds.conf and pi
 	Add your username and password for PIA in /etc/openvpn/creds.conf
 
 3) Install without Package Manager, run commands:
+	
+	Pystray is a dependant for this program. This can be done by running command: 'pip install pystray' or 'apt install python3-pystray' depends on your distro.
 
         Download the zip file of the code, off of Github. This is found under the [<> Code] button on https://github.com/stormtheory/firefox-firejail-wrapper.
 
