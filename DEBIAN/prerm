@@ -1,0 +1,13 @@
+#!/usr/bin/bash
+
+SERVICE_NAME=piavpn.service
+
+unlink /etc/openvpn/pia.conf
+
+echo "Handling Service"
+systemctl disable $SERVICE_NAME
+systemctl stop $SERVICE_NAME
+rm /etc/systemd/system/$SERVICE_NAME
+systemctl daemon-reload
+
+exit 0
