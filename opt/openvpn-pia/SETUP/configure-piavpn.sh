@@ -53,8 +53,15 @@ WantedBy=multi-user.target" > /etc/systemd/system/$SERVICE_NAME
 	fi
 }
 
-
 SERVICE
+
+function OWNERSHIP {
+
+chown root:root -R /opt/openvpn-pia
+chown root:root /etc/systemd/system/piavpn.service
+
+}
+OWNERSHIP
 
 function SUDO {
 echo "Sudoers..."
