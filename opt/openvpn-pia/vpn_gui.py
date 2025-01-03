@@ -151,7 +151,7 @@ check_dir_exists_exit(USER_HOME)
 
 
 def find_config_distination():
-    LOCATION = subprocess.run(["ls -al /etc/openvpn/pia.conf|awk '{print $11}'"], shell=True, stdout=subprocess.PIPE).stdout.decode('ascii').rstrip('\r\n')
+    LOCATION = subprocess.run(["ls -al /opt/openvpn-pia/pia.conf|awk '{print $11}'"], shell=True, stdout=subprocess.PIPE).stdout.decode('ascii').rstrip('\r\n')
     LOCATION = subprocess.run(["basename {}".format(LOCATION)], shell=True, stdout=subprocess.PIPE).stdout.decode('ascii').rstrip('\r\n')
     return LOCATION
 
@@ -190,7 +190,7 @@ def service_status(qservice):
                             logging.debug(EXT_IP)
 
                             ### Check IP Address of the Network to the Public Address
-                            CONFIG_IP = subprocess.run(["grep remote /etc/openvpn/pia.conf|grep -v server|awk '{print $2}'|sed 's/[0-9]\\+/ /5'"], shell=True, stdout=subprocess.PIPE).stdout.decode('ascii').rstrip('\r\n')
+                            CONFIG_IP = subprocess.run(["grep remote /opt/openvpn-pia/pia.conf|grep -v server|awk '{print $2}'|sed 's/[0-9]\\+/ /5'"], shell=True, stdout=subprocess.PIPE).stdout.decode('ascii').rstrip('\r\n')
                             
                             ### Come and clean this up
                             qEXT_IP = EXT_IP.split(".")
@@ -223,7 +223,7 @@ def service_status(qservice):
                             LOCATION = find_config_distination()
                             systray.menu = pystray.Menu(Item("Turn Off", vpn_off), Item('Change Location', CHOICE_LOCATIONS), Item(LOCATION, btn_return), Item('Public IP: ' + EXT_IP, btn_return), Item('LAN: ' + ETH_IP, btn_return), Item("Exit", exit_app))
                             ### Look up Cipher level
-                            CIPHER_LEVEL = subprocess.run(["grep cipher /etc/openvpn/pia.conf|awk '{print $2}'"], shell=True, stdout=subprocess.PIPE).stdout.decode('ascii').rstrip('\r\n')
+                            CIPHER_LEVEL = subprocess.run(["grep cipher /opt/openvpn-pia/pia.conf|awk '{print $2}'"], shell=True, stdout=subprocess.PIPE).stdout.decode('ascii').rstrip('\r\n')
                             systray.menu = pystray.Menu(Item("Turn Off", vpn_off), Item('Change Location', CHOICE_LOCATIONS), Item(LOCATION, btn_return), Item('Public IP: ' + EXT_IP, btn_return), Item('LAN: ' + ETH_IP, btn_return), Item(CIPHER_LEVEL, btn_return), Item("Exit", exit_app))
 
             else:
