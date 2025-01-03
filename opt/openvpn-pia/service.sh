@@ -19,7 +19,7 @@ DIR=/etc/openvpn
 PIA_CONFIG_DIR=/opt/openvpn-pia/PIA
 OPENVPN_SCRIPT=/opt/openvpn-pia/openvpn.py
 OPENVPN_CONFIG=/opt/openvpn-pia/pia.conf
-LOGIN_CREDS_FILE=/etc/openvpn/creds.conf
+LOGIN_CREDS_FILE=/etc/openvpn/creds
 HOME_CONFIG=/home/$quser/.openvpn-pia.conf
 DEFAULT_OPENVPN_PIA_CONFIG=/root/.openvpn-pia.conf
 
