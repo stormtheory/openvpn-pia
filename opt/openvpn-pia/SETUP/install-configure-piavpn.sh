@@ -4,7 +4,7 @@ cd "$(dirname "$0")"
 USER_LIST=$(grep bash /etc/passwd|grep '/home'|grep '[1-2][0-9][0-9][0-9]'|awk -F':' '{print $1}')
 SERVICE_NAME=piavpn.service
 WORKING_DIR=/opt/openvpn-pia
-LOGIN_CREDS_FILE=/etc/openvpn/creds.conf
+LOGIN_CREDS_FILE=/etc/openvpn/creds
 
 ID=$(id -u)
 if [ "$ID" != 0 ];then
@@ -17,7 +17,34 @@ if [ ! -d /etc/openvpn ];then
 	exit 1
 fi
 
+PWD=$(pwd)
+if [ "$PWD" != /opt/openvpn-pia/SETUP ];then
+	echo "Doing Self Install..."
+	if echo "$PWD"|grep -q '/opt/openvpn-pia/SETUP';then
+		cp -r ../../openvpn-pia/ /opt/
+	else
+		echo "ERROR: Copying Files"
+	fi
+else
+	echo "Doing DEB Install..."
+fi
 
+#### Update configs/locations
+if [ -f /etc/openvpn/creds.conf ];then
+	mv /etc/openvpn/creds.conf $LOGIN_CREDS_FILE
+	chmod 600 $LOGIN_CREDS_FILE
+	chown root:root $LOGIN_CREDS_FILE
+fi
+
+#### Disable and stop openvpn service
+if systemctl is-enabled openvpn.service |grep -q 'enabled';then
+	systemctl disable openvpn.service
+	if systemctl is-active openvpn.service |grep -q 'active';then
+        	systemctl stop openvpn.service
+	fi
+fi
+
+#### Check for Login file and if not there make a template
 if [ ! -f "$LOGIN_CREDS_FILE" ];then
 	# YOUR_USERNAME
 	# YOUR_PASSWORD
@@ -153,7 +180,7 @@ HOME_CONFIG
 
 
 
-# auth-user-pass /etc/openvpn/creds.conf
+# auth-user-pass /etc/openvpn/creds
 # auth-nocache
 
 

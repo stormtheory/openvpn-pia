@@ -1,12 +1,12 @@
 #!/usr/bin/bash
 
 SERVICE_NAME=piavpn.service
-
-unlink /etc/openvpn/pia.conf
-
-
-
 SUDO_FILE=/etc/sudoers.d/openvpn-pia
+
+
+unlink /opt/openvpn-pia/pia.conf
+
+
 if [ -f $SUDO_FILE ];then
 	chmod 640 $SUDO_FILE
 	rm $SUDO_FILE
