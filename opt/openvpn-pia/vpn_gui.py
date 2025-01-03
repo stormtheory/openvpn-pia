@@ -88,51 +88,34 @@ def btn_return():
 
 def relocate(FILE):
     subprocess.run(["sed -i '/run/c\\run {}' {}".format(FILE,HOME_CONFIG)], shell=True, stdout=subprocess.PIPE)
+    vpn_restart()
 
 def locate_chicago():
-    FILE='us_chicago.ovpn'
-    relocate(FILE)
-    vpn_restart()
+    relocate('us_chicago.ovpn')
 
 def locate_MO():
-    FILE='us_missouri.ovpn'
-    relocate(FILE)
-    vpn_restart()
+    relocate('us_missouri.ovpn')
 
 def locate_east():
-    FILE='us_east.ovpn'
-    relocate(FILE)
-    vpn_restart()
+    relocate('us_east.ovpn')
 
 def locate_atlanta():
-    FILE='us_atlanta.ovpn'
-    relocate(FILE)
-    vpn_restart()
+    relocate('us_atlanta.ovpn')
 
 def locate_DC():
-    FILE='us_washington_dc.ovpn'
-    relocate(FILE)
-    vpn_restart()
+    relocate('us_washington_dc.ovpn')
 
 def locate_switzerland():
-    FILE='switzerland.ovpn'
-    relocate(FILE)
-    vpn_restart()
+    relocate('switzerland.ovpn')
 
 def locate_netherlands():
-    FILE='nl_amsterdam.ovpn'
-    relocate(FILE)
-    vpn_restart()
+    relocate('nl_amsterdam.ovpn')
 
 def locate_london():
-    FILE='uk_london.ovpn'
-    relocate(FILE)
-    vpn_restart()
+    relocate('uk_london.ovpn')
 
 def locate_FL():
-    FILE='us_florida.ovpn'
-    relocate(FILE)
-    vpn_restart()
+    relocate('us_florida.ovpn')
 
 global CHOICE_LOCATIONS
 US_LOCATIONS = pystray.Menu(Item("Missouri", locate_MO), Item("Chicago", locate_chicago), Item("East", locate_east), Item("Atlanta", locate_atlanta), Item("Wash DC", locate_DC), Item("Florida", locate_FL))

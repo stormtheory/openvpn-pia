@@ -6,9 +6,15 @@ SERVICE_NAME=piavpn.service
 WORKING_DIR=/opt/openvpn-pia
 LOGIN_CREDS_FILE=/etc/openvpn/creds.conf
 
+ID=$(id -u)
+if [ "$ID" == 0 ];then
+	echo "Must be root..."
+	exit 1
+fi
+
 if [ ! -d /etc/openvpn ];then
 	echo "ERROR: Openvpn dir missing..."
-	exit
+	exit 1
 fi
 
 
@@ -68,17 +74,32 @@ echo "Sudoers..."
 while IFS= read -r line;do
 		echo "$line"
 
-if grep "$line ALL=(ALL) NOPASSWD:/usr/bin/systemctl restart piavpn.service" /etc/sudoers;then
+
+if [ -d /etc/sudoers.d ];then
+	FILE=/etc/sudoers.d/openvpn-pia
+	if [ -f $FILE ];then
+		chmod 640 $FILE
+	fi
+else
+	FILE=/etc/sudoers
+fi
+
+if grep "$line ALL=(ALL) NOPASSWD:/usr/bin/systemctl restart piavpn.service" $FILE;then
 	echo 'good'
 else
-	echo "$line ALL=(ALL) NOPASSWD:/usr/bin/systemctl restart piavpn.service" >> /etc/sudoers
+	echo "$line ALL=(ALL) NOPASSWD:/usr/bin/systemctl restart piavpn.service" >> $FILE
 fi
-if grep "$line ALL=(ALL) NOPASSWD:/usr/bin/systemctl stop piavpn.service" /etc/sudoers;then
+if grep "$line ALL=(ALL) NOPASSWD:/usr/bin/systemctl stop piavpn.service" $FILE;then
         echo 'good'
 else
-        echo "$line ALL=(ALL) NOPASSWD:/usr/bin/systemctl stop piavpn.service" >> /etc/sudoers
+        echo "$line ALL=(ALL) NOPASSWD:/usr/bin/systemctl stop piavpn.service" >> $FILE
 fi		
                 done <<< "$USER_LIST"
+
+if [ -d /etc/sudoers.d ];then
+        chmod 440 $FILE
+fi
+
 }
 SUDO
 
