@@ -1,4 +1,6 @@
 # openvpn-pia
+# In BETA
+
 A non-proprietary, open source, small but mighty PIA client with System Tray GUI and Service. Using AES-256 encryption to create a secure VPN tunnel to the internet, sleep peacefully at night knowing your privacy is just that much safer. You must have an active PIA subscription.
 
 # Features
@@ -9,15 +11,12 @@ A non-proprietary, open source, small but mighty PIA client with System Tray GUI
 5) Checks to make sure your connection is working and your Public IP has changed.
 6) Persistent settings and Default settings.
 
+# Limitation
+1) Only one device on a network per VPN location. For example: two computers at your home can't be both connectioned to Chicago's PIA Server.
+
 # Coming-Soon
 1) More configurations for locations around the world.
 2) Anything else, just ask. Feedback is greatly needed.
-
-###########
-#	  #
-# In BETA #
-#	  #
-###########
 
 # System Requirements
 In order to use this, will need openvpn 2.4 or better, becuase of the openvpn configs from PIA.
