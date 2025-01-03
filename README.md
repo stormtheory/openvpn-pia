@@ -12,7 +12,7 @@ A non-proprietary, open source, small but mighty PIA client with System Tray GUI
 6) Persistent settings and Default settings.
 
 # Limitation
-1) Only one device on a network per VPN location. For example: two computers at your home can't be both connectioned to Chicago's PIA Server.
+1) Only one computer on a network per VPN location. For example: two computers at your home can't be both connected to Chicago's PIA Server from the same network at the same time. This seems to be an issue with openvpn and PIA, still looking into the issue.
 
 # Coming-Soon
 1) More configurations for locations around the world.
