@@ -3,6 +3,8 @@
 
 A non-proprietary, open source, small but mighty PIA client with System Tray GUI and Service. Using AES-256 encryption to create a secure VPN tunnel to the internet, sleep peacefully at night knowing your privacy is just that much safer. You must have an active PIA subscription.
 
+![screenshot_openvpn-pia-client](https://github.com/user-attachments/assets/8bc24e77-531e-484f-8e1c-09a37525c7da)
+
 # Features
 1) Killswitch if enabled, will tempoaray remove the Default Gateway of your network. This prevents other connections outside of the VPN other than your normal LAN connections to include DNS connections. Sets a DNS for the PIA's DNS accross the VPN.
 2) A system tray user interface is python program that allows you to control the VPN without root privileged access.
