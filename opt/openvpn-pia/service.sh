@@ -23,6 +23,28 @@ LOGIN_CREDS_FILE=/etc/openvpn/creds
 HOME_CONFIG=/home/$quser/.openvpn-pia.conf
 DEFAULT_OPENVPN_PIA_CONFIG=/root/.openvpn-pia.conf
 
+
+function LOADKILLSW {
+if [ -f "$HOME_CONFIG" ];then
+        echo "Loading Home Config..."
+        KILLSWITCH=$(cat "$HOME_CONFIG" |grep -v "#"|grep killswitch|awk '{print $2}')
+else
+        ## DEFAULT
+        echo "Loading DEFAULT Config..."
+        KILLSWITCH=$(echo "$DEFAULT_KILLSWITCH")
+fi
+
+# Error check killswitch setting
+if [ "$KILLSWITCH" == true ];then
+        echo "Killswitch Mode"
+elif [ "$KILLSWITCH" != false ];then
+        echo "ERROR: Killswitch setting can only be true or false."
+        exit
+fi
+
+}
+
+
 function LOAD_CONFIG {
 if [ -z "$quser" ];then
         quser=root
@@ -42,17 +64,16 @@ else
 	KILLSWITCH=$(echo "$DEFAULT_KILLSWITCH")
 fi
 
-# Error check killswitch setting
-if [ "$KILLSWITCH" == true ];then
-	echo "Killswitch Mode"
-elif [ "$KILLSWITCH" != false ];then
-	echo "ERROR: Killswitch setting can only be true or false."
-	exit
-fi
-
-
 if [ ! -d "$DIR" ];then
         echo "ERROR: Openvpn dir missing..."
+        exit
+fi
+
+# Error check killswitch setting
+if [ "$KILLSWITCH" == true ];then
+        echo "Killswitch Mode"
+elif [ "$KILLSWITCH" != false ];then
+        echo "ERROR: Killswitch setting can only be true or false."
         exit
 fi
 
@@ -123,6 +144,18 @@ function PID {
 	SCRIPT=$(echo $OPENVPN_SCRIPT)
 	echo "$SCRIPT"
 	PID=$(ps -ef|grep python3|grep -v grep|grep root|grep "$SCRIPT"|awk '{print $2}')
+	PID2=$(ps -ef|grep -v grep|grep 'bin/openvpn'|awk {'print $2'})
+}
+
+function KILL_PID {
+        if [ ! -z "$PID" ];then
+                echo "$PID"
+                kill -9 $PID
+        fi
+        if [ ! -z "$PID2" ];then
+                echo "$PID2"
+        	kill -9 $PID2
+	fi
 }
 
 function GRAB_ASSETS {
@@ -134,8 +167,8 @@ INET_DEV=$(route -nn|egrep -v 'tun0|tun1' | awk 'FNR==3 {print $8}')
 if [ ! -z "$1" ];then
         if [ "$1" == restart ];then
                 PID
-		echo "$PID"
-                kill -9 $PID
+		KILL_PID
+		LOADKILLSW
 		if [ "$KILLSWITCH" == true ];then
                         RESTART_INTERFACE
                         sleep 2
@@ -148,8 +181,8 @@ fi
 if [ ! -z "$1" ];then
 	if [ "$1" == stop ];then
 		PID
-		echo "$PID"
-		kill -9 $PID
+		KILL_PID
+		LOADKILLSW
 		if [ "$KILLSWITCH" == true ];then
 			RESTART_INTERFACE
 			sleep 2
