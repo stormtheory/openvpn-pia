@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+/opt/openvpn-pia/SETUP/install-configure-piavpn.sh

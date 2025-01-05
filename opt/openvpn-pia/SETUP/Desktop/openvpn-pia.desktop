@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=VPN
+Exec=/opt/openvpn-pia/vpn_gui.py
+Comment=
+Terminal=false
+PrefersNonDefaultGPU=false
+Icon=/opt/openvpn-pia/icons/vpn_brown_mine.png
+Type=Application

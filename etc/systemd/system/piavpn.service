@@ -1,0 +1,17 @@
+[Unit]
+Description=--PIA OpenVPN Service--
+StartLimitIntervalSec=5
+StartLimitBurst=5
+
+[Service]
+Type=fork
+WorkingDirectory=/opt/openvpn-pia/
+ExecStart=/opt/openvpn-pia/service.sh
+ExecReload=/opt/openvpn-pia/service.sh restart
+ExecStop=/opt/openvpn-pia/service.sh stop
+Restart=always
+RestartSec=4
+RemainAfterExit=no
+
+[Install]
+WantedBy=multi-user.target

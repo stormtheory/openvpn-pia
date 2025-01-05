@@ -1,0 +1,18 @@
+
+
+Within the application, PIA uses private IPs in lieu of a public-facing DNS server. For users that wish to take advantage of PIA DNS that are not using the PIA application, we recommend adding the following IPs to a configuration file, which provide functionality solely based on need:  
+
+10.0.0.242 - DNS
+
+10.0.0.243 - DNS+Streaming
+
+10.0.0.244 - DNS+MACE
+
+10.0.0.241 - DNS+Streaming+Mace
+
+In order to utilize these DNS set-ups, you will need to add the following line to a custom configuration file:
+
+dhcp-option DNS <IP Address> (ex: dhcp-option DNS 10.0.0.242)
+
+NOTE: These DNS options are not designed to be utilized in conjunction with the application and must be used while connected to the VPN. The PIA application is responsible for ensuring that these DNS IPs are assigned based on use-case and no changes within the application or on your system are necessary when you are using the application.
+

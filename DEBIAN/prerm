@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+
+SERVICE_NAME=piavpn.service
+SUDO_FILE=/etc/sudoers.d/openvpn-pia
+
+
+unlink /opt/openvpn-pia/pia.conf
+
+
+if [ -f $SUDO_FILE ];then
+	chmod 640 $SUDO_FILE
+	rm $SUDO_FILE
+fi
+
+echo "Handling Service"
+systemctl disable $SERVICE_NAME
+systemctl stop $SERVICE_NAME
+rm /etc/systemd/system/$SERVICE_NAME
+systemctl daemon-reload
+
+exit 0
