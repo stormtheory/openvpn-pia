@@ -3,7 +3,7 @@
 
 A non-proprietary, open source, small but mighty PIA client with System Tray GUI and Service. Using AES-256 encryption to create a secure VPN tunnel to the internet, sleep peacefully at night knowing your privacy is just that much safer. You must have an active PIA subscription.
 
-![screenshot-openvpn-pia-client](https://github.com/user-attachments/assets/59ff78ac-f7d0-4d1b-8ead-dffddac79743)
+![Screenshot from 2025-01-04 21-42-54](https://github.com/user-attachments/assets/29066e4f-9906-4869-8320-adeae1067028)
 
 # Features
 1) Killswitch if enabled, will tempoaray remove the Default Gateway of your network. This prevents other connections outside of the VPN other than your normal LAN connections to include DNS connections. Sets a DNS for the PIA's DNS accross the VPN.
