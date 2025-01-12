@@ -251,6 +251,7 @@ def service_status(qservice):
                             else:
                                 logging.debug('red')
                                 icon_change('red')
+                                tray_notifation(APP_NAME, 'Online BUT showing Error... \n  Public IP is network ' + qEXT_IP_final + ' but should be ' + qCONFIG_IP_final)
 
                             #### Pull more data for Display
                             ETH_IP = subprocess.run(["ifconfig tun0 |grep 'inet'|grep -v inet6|awk '{print $2}'"], shell=True, stdout=subprocess.PIPE).stdout.decode('ascii').rstrip('\r\n')
