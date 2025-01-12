@@ -117,6 +117,9 @@ def locate_germany():
 def locate_london():
     relocate('uk_london.ovpn')
 
+def locate_manchester():
+    relocate('uk_manchester.ovpn')
+
 def locate_Ireland():
     relocate('ireland.ovpn')
 
@@ -150,14 +153,37 @@ def locate_HI():
 def locate_west():
     relocate('us_west.ovpn')
 
+def locate_CA():
+    relocate('us_california.ovpn')
+    
+def locate_toronto():
+    relocate('ca_toronto.ovpn')
+    
+def locate_vancouver():
+    relocate('ca_vancouver.ovpn')
+
+def locate_ontario():
+    relocate('ca_ontario.ovpn')
+    
+def locate_south_korea():
+    relocate('south_korea.ovpn')
+
+def locate_singapore():
+    relocate('singapore.ovpn')
+
+def locate_japan():
+    relocate('japan.ovpn')
+
 global CHOICE_LOCATIONS
+ASIA_LOCATIONS = pystray.Menu(Item("Japan", locate_japan), Item("Singapore", locate_singapore), Item("South Korea", locate_south_korea))
+CANADA_LOCATIONS = pystray.Menu(Item("Ontario", locate_ontario), Item("Toronto", locate_toronto), Item("Vancouver", locate_vancouver))
 EAST_LOCATIONS = pystray.Menu(Item("East", locate_east), Item("Atlanta", locate_atlanta), Item("Wash DC", locate_DC), Item("Florida", locate_FL))
 CENTRAL_LOCATIONS = pystray.Menu(Item("Missouri", locate_MO), Item("Indiana", locate_IN), Item("Michigan", locate_MI), Item("Chicago", locate_chicago))
-WEST_LOCATIONS = pystray.Menu(Item("West", locate_west), Item("Hawaii", locate_HI))
+WEST_LOCATIONS = pystray.Menu(Item("West", locate_west), Item("California", locate_CA), Item("Hawaii", locate_HI))
 US_LOCATIONS = pystray.Menu(Item("CENTRAL", CENTRAL_LOCATIONS), Item("EAST", EAST_LOCATIONS), Item("WEST", WEST_LOCATIONS))
 OCEANIA_LOCATIONS = pystray.Menu(Item("Sydney", locate_sydney), Item("Melbourne", locate_melbourne), Item("Brisbane", locate_brisbane), Item("New Zealand", locate_new_zealand))
-EUROPE_LOCATIONS = pystray.Menu(Item("Switzerland", locate_switzerland), Item("Netherlands", locate_netherlands), Item("UK London", locate_london), Item("Ireland", locate_Ireland, Item("Germany", locate_germany))
-CHOICE_LOCATIONS = pystray.Menu(Item("US", US_LOCATIONS), Item("EUROPE", EUROPE_LOCATIONS), Item("OCEANIA", OCEANIA_LOCATIONS), Item("Costa Rica", locate_costa_rica))
+EUROPE_LOCATIONS = pystray.Menu(Item("Switzerland", locate_switzerland), Item("Netherlands", locate_netherlands), Item("UK London", locate_london), Item("UK Manchester", locate_manchester), Item("Ireland", locate_Ireland), Item("Germany", locate_germany))
+CHOICE_LOCATIONS = pystray.Menu(Item("US", US_LOCATIONS), Item("CANADA", CANADA_LOCATIONS), Item("EUROPE", EUROPE_LOCATIONS), Item("OCEANIA", OCEANIA_LOCATIONS), Item("ASIA", ASIA_LOCATIONS), Item("Costa Rica", locate_costa_rica))
 
 def THERE_ONLY_CAN_BE_ONE():
   global EXIT_PYTHON

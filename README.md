@@ -13,7 +13,7 @@ A non-proprietary, open source, small but mighty PIA client with System Tray GUI
 5) Checks to make sure your connection is working and your Public IP has changed.
 6) Persistent settings and Default settings.
 
-# Current Supported VPN Destinations - 20 configurations
+# Current Supported VPN Destinations - 28 configurations
     US =>
         CENTRAL =>
             Missouri
@@ -27,18 +27,28 @@ A non-proprietary, open source, small but mighty PIA client with System Tray GUI
             Florida
         WEST =>
             West
+            California
             Hawaii
+    CANADA =>
+        Ontario
+        Toronto
+        Vancouver
     EUROPE =>
         Switzerland
         Netherlands
         UK London
+        UK Manchester
         Ireland
-	Germany
+        Germany
     OCEANIA =>
         Sydney
         Melbourne
         Brisbane
         New Zealand
+    ASIA =>
+        Japan
+        Singapore
+        South Korea
     Costa Rica
 
 # Limitation
