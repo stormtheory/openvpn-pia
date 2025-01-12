@@ -13,7 +13,7 @@ A non-proprietary, open source, small but mighty PIA client with System Tray GUI
 5) Checks to make sure your connection is working and your Public IP has changed.
 6) Persistent settings and Default settings.
 
-# Current Supported VPN Destinations
+# Current Supported VPN Destinations - 20 configurations
     US =>
         CENTRAL =>
             Missouri
@@ -33,11 +33,13 @@ A non-proprietary, open source, small but mighty PIA client with System Tray GUI
         Netherlands
         UK London
         Ireland
+	Germany
     OCEANIA =>
         Sydney
         Melbourne
         Brisbane
         New Zealand
+    Costa Rica
 
 # Limitation
 1) Only one computer on a network per VPN location. For example: two computers at your home can't be both connected to Chicago's PIA Server from the same network at the same time. This seems to be an issue with openvpn and PIA, still looking into the issue.
