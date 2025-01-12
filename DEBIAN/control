@@ -4,7 +4,7 @@ Author: github.com/StormTheory
 Maintainer: StormTheory <stormtheory42@protonmail.com>
 Website: https://github.com/StormTheory/openvpn-pia
 Homepage: https://github.com/StormTheory/openvpn-pia
-Installed-Size: 260 
+Installed-Size: 308 
 Version: 250112-1
 Depends: openvpn (>= 2.4),bash,python3
 Architecture: all
