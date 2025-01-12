@@ -110,6 +110,9 @@ def locate_switzerland():
 
 def locate_netherlands():
     relocate('nl_amsterdam.ovpn')
+    
+def locate_germany():
+    relocate('de_berlin.ovpn')
 
 def locate_london():
     relocate('uk_london.ovpn')
@@ -153,7 +156,7 @@ CENTRAL_LOCATIONS = pystray.Menu(Item("Missouri", locate_MO), Item("Indiana", lo
 WEST_LOCATIONS = pystray.Menu(Item("West", locate_west), Item("Hawaii", locate_HI))
 US_LOCATIONS = pystray.Menu(Item("CENTRAL", CENTRAL_LOCATIONS), Item("EAST", EAST_LOCATIONS), Item("WEST", WEST_LOCATIONS))
 OCEANIA_LOCATIONS = pystray.Menu(Item("Sydney", locate_sydney), Item("Melbourne", locate_melbourne), Item("Brisbane", locate_brisbane), Item("New Zealand", locate_new_zealand))
-EUROPE_LOCATIONS = pystray.Menu(Item("Switzerland", locate_switzerland), Item("Netherlands", locate_netherlands), Item("UK London", locate_london), Item("Ireland", locate_Ireland))
+EUROPE_LOCATIONS = pystray.Menu(Item("Switzerland", locate_switzerland), Item("Netherlands", locate_netherlands), Item("UK London", locate_london), Item("Ireland", locate_Ireland, Item("Germany", locate_germany))
 CHOICE_LOCATIONS = pystray.Menu(Item("US", US_LOCATIONS), Item("EUROPE", EUROPE_LOCATIONS), Item("OCEANIA", OCEANIA_LOCATIONS), Item("Costa Rica", locate_costa_rica))
 
 def THERE_ONLY_CAN_BE_ONE():
