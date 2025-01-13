@@ -167,7 +167,9 @@ chown $quser:$quser $HOME/$quser/.openvpn-pia.conf
 fi
 
 if [ "$quser" != root ];then
-cp Autostart/openvpn-pia.desktop /home/$quser/.config/autostart/
+	if [ ! -f /home/$quser/.config/autostart/openvpn-pia.desktop ];then 
+		cp Autostart/openvpn-pia.desktop /home/$quser/.config/autostart/
+	fi
 cp Desktop/openvpn-pia.desktop /home/$quser/Desktop/
 chown $quser:$quser /home/$quser/Desktop/openvpn-pia.desktop
 chown $quser:$quser /home/$quser/.config/autostart/openvpn-pia.desktop
