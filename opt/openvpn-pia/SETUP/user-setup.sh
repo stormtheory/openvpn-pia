@@ -4,7 +4,7 @@ cd "$(dirname "$0")"
 USERS=$(grep bash /etc/passwd|grep '/home'|grep '[1-2][0-9][0-9][0-9]'|awk -F':' '{print $1}')
 SERVICE_NAME=piavpn.service
 WORKING_DIR=/opt/openvpn-pia
-LOGIN_CREDS_FILE=/opt/openvpn-pia/creds.conf
+LOGIN_CREDS_FILE=/opt/openvpn-pia/pia-creds
 
 if [ ! -d /etc/openvpn ];then
 	echo "ERROR: Openvpn dir missing..."
