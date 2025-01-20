@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=VPN
+Name=PIA VPN
 Exec=/opt/openvpn-pia/vpn_gui.py
 Comment=
 Terminal=false
