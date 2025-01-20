@@ -64,14 +64,14 @@ In order to use this, will need openvpn 2.4 or better, becuase of the openvpn co
 At this time Ubuntu/Mint is only tested, but should work on RHEL/Rocky/CentOS, no Yum/DNF package support yet. Please feedback if you want a YUM/DNF .rpm package. If there is interest in other Linux flavors/families please let me know or it's just a project for me and my family :P as our daily drivers.
 
 # How it Works
-Creates a service piavpn.service and two files in /etc/openvpn/creds and /opt/openvpn-pia/pia.conf is a softlink to PIA's config file in /opt/openvpn-pia/PIA. Adds in the sudoers file for all users to systemctl start and stop piavpn.service. 
+Creates a service piavpn.service and two files in /etc/openvpn/pia-creds and /opt/openvpn-pia/pia.conf is a softlink to PIA's config file in /opt/openvpn-pia/PIA. Adds in the sudoers file for all users to systemctl start and stop piavpn.service. 
 
 # INSTALL
 1) Download the latest released .deb package file off of github and install on your system.
 
 		sudo apt deb openvpn-pia-client*.deb
 
-	Add your username and password for PIA in /etc/openvpn/creds. This file can only be read by your local root user.
+	Add your username and password for PIA in /etc/openvpn/pia-creds. This file can only be read by your local root user.
 
 	NOTE: Pystray is a dependant for this program. This can be done by running command: 'pip install pystray' or 'apt install python3-pystray' depends on your distro.
 
@@ -99,7 +99,7 @@ Creates a service piavpn.service and two files in /etc/openvpn/creds and /opt/op
 
    		sudo apt deb openvpn-pia-client*.deb
 
-   Add your username and password for PIA in /etc/openvpn/creds. This file can only be read by your local root user.
+   Add your username and password for PIA in /etc/openvpn/pia-creds. This file can only be read by your local root user.
 
    To always be on VPN run command:
 
@@ -118,7 +118,7 @@ Creates a service piavpn.service and two files in /etc/openvpn/creds and /opt/op
 
         opt/openvpn-pia/SETUP/install-configure-piavpn.sh
 
-   Add your username and password for PIA in /etc/openvpn/creds. This file can only be read by your local root user.
+   Add your username and password for PIA in /etc/openvpn/pia-creds. This file can only be read by your local root user.
 
    To always be on VPN run command:
 
