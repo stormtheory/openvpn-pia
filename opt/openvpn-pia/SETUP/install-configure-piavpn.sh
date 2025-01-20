@@ -4,7 +4,7 @@ cd "$(dirname "$0")"
 USER_LIST=$(grep bash /etc/passwd|grep '/home'|grep '[1-2][0-9][0-9][0-9]'|awk -F':' '{print $1}')
 SERVICE_NAME=piavpn.service
 WORKING_DIR=/opt/openvpn-pia
-LOGIN_CREDS_FILE=/etc/openvpn/creds
+LOGIN_CREDS_FILE=/etc/openvpn/pia-creds
 
 ID=$(id -u)
 if [ "$ID" != 0 ];then
@@ -34,6 +34,11 @@ if [ -f /etc/openvpn/creds.conf ];then
 	mv /etc/openvpn/creds.conf $LOGIN_CREDS_FILE
 	chmod 600 $LOGIN_CREDS_FILE
 	chown root:root $LOGIN_CREDS_FILE
+fi
+if [ -f /etc/openvpn/creds ];then
+        mv /etc/openvpn/creds $LOGIN_CREDS_FILE
+        chmod 600 $LOGIN_CREDS_FILE
+        chown root:root $LOGIN_CREDS_FILE
 fi
 
 #### Disable and stop openvpn service
@@ -167,9 +172,7 @@ chown $quser:$quser $HOME/$quser/.openvpn-pia.conf
 fi
 
 if [ "$quser" != root ];then
-	if [ ! -f /home/$quser/.config/autostart/openvpn-pia.desktop ];then 
-		cp Autostart/openvpn-pia.desktop /home/$quser/.config/autostart/
-	fi
+cp Autostart/openvpn-pia.desktop /home/$quser/.config/autostart/
 cp Desktop/openvpn-pia.desktop /home/$quser/Desktop/
 chown $quser:$quser /home/$quser/Desktop/openvpn-pia.desktop
 chown $quser:$quser /home/$quser/.config/autostart/openvpn-pia.desktop
@@ -182,11 +185,11 @@ HOME_CONFIG
 
 
 
-# auth-user-pass /etc/openvpn/creds
+# auth-user-pass /etc/openvpn/pia-creds
 # auth-nocache
 
 
-# /etc/openvpn/creds.conf
+# /etc/openvpn/pia-creds
 # YOUR_USERNAME
 # YOUR_PASSWORD
 
