@@ -32,7 +32,10 @@ echo "
 #us_seattle.ovpn
 #us_texas.ovpn
 #us_west.ovpn
-run us_missouri-256.ovpn" > ~/.openvpn-pia.conf
+
+run us_missouri.ovpn
+
+killswitch true" > ~/.openvpn-pia.conf
 chmod 600 ~/.openvpn-pia.conf
 fi
 
