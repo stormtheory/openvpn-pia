@@ -17,8 +17,7 @@ import logging
 from subprocess import check_output
 
 ### Find Username
-USERNAME = subprocess.run(["/opt/openvpn-pia/sessions-check.sh"], shell=True, stdout=subprocess.PIPE)
-USERNAME = USERNAME.stdout.decode('ascii').rstrip('\r\n')
+USERNAME = os.getlogin()
 print(USERNAME)
 logging.debug(USERNAME)
 
