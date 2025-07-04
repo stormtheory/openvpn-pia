@@ -78,6 +78,7 @@ Creates a service piavpn.service and two files in /etc/openvpn/pia-creds and /op
 
 		pip install pystray
 		apt install python3-pystray
+		apt install systemd-resloved
 	
  	To always be on VPN run command:
 
@@ -89,6 +90,7 @@ Creates a service piavpn.service and two files in /etc/openvpn/pia-creds and /op
 
 		pip install pystray
 		apt install python3-pystray
+		apt install systemd-resloved
 
    Download the zip file of the code, off of Github. This is found under the [<> Code] button on https://github.com/stormtheory/openvpn-pia.
 
@@ -112,6 +114,7 @@ Creates a service piavpn.service and two files in /etc/openvpn/pia-creds and /op
 
 		pip install pystray
 		apt install python3-pystray
+		apt install systemd-resloved
 
    Download the zip file of the code, off of Github. This is found under the [<> Code] button on https://github.com/stormtheory/openvpn-pia.
 
